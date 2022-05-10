@@ -1,0 +1,54 @@
+{{> header }}
+
+			<main class="content">
+				<div class="container-fluid p-0">
+					<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#users}}
+            <tr>
+                <td>{{ _id }}</td>
+                <td>{{ name }}</td>
+                <td>{{ email }}</td>
+            </tr>
+            {{/users}}
+        </tbody>
+       
+    </table>
+
+
+
+
+
+
+
+				</div>
+			</main>
+
+		</div>
+	</div>
+
+	<script src="js/app.js"></script> 
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+    $('#example').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+	
+} );
+	</script>
+
+</body>
+
+</html>

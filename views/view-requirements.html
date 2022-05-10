@@ -1,0 +1,105 @@
+{% load static %}
+{% include "header.html"%}
+
+			<main class="content">
+                
+				<div class="container-fluid p-0">
+					<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>description</th>
+                <th>Expirence</th>
+                <th>Status</th>
+                <th>View</th>
+                <th>Closed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in requirements %}
+            <tr>
+                <td>{{ client.title }}</td>
+                <td>{{ client.description }}</td>
+                <td>{{ client.expirence }}</td>
+                <td>{{ client.status }}</td>
+                <td><a type="button" href="/view-requirements/{{client.id}}">View</a></td>
+                {% if client.status == 'Closed' %}
+                <td><a type="button" >Closed</a></td>
+                {% elif client.status == 'Selected' %}
+                <td><a type="button">Selected</a></td>
+                {% else %}
+                <td><a type="button" href="/close-requirement/{{client.id}}">Close</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+       
+    </table>
+
+
+    {% if fulfillments %}
+
+
+    <div style="margin-top:100px">
+    <h2>Fulfillments</h2>
+
+        <table id="example2"  class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Expirence</th>
+                    <th>Status</th>
+                    <th>View</th>
+                    <th>Closed</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in fulfillments %}
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.description }}</td>
+                    <td>{{ client.expirence }}</td>
+                    <td>{{ client.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+           
+        </table>
+
+
+    </div>
+
+
+
+
+    {% endif %}
+
+				</div>
+			</main>
+
+		</div>
+	</div>
+
+	<script src="{% static 'js/app.js' %}"></script> 
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+    $('#example').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+    $('#example2').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+} );
+	</script>
+
+</body>
+
+</html>

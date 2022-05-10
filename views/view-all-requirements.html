@@ -1,0 +1,140 @@
+{% load static %}
+{% include "header.html"%}
+
+			<main class="content">
+                
+				<div class="container-fluid p-0">
+					<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>description</th>
+                <th>Expirence</th>
+                <th>Status</th>
+                <th>View</th>
+                <th>Assign</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in requirements %}
+            <tr>
+                <td>{{ client.title }}</td>
+                <td>{{ client.description }}</td>
+                <td>{{ client.expirence }}</td>
+                <td>{{ client.status }}</td>
+                <td><a type="button" href="/view-all-requirements/view/{{client.id}}">View</a></td>
+                {% if client.status == 'Closed' %}
+                <td><a type="button">Closed</a></td>
+                {% elif client.status == 'Selected' %}
+                <td><a type="button">Selected</a></td>
+                {% else %}
+                <td><a type="button" href="/view-all-requirements/assign/{{client.id}}">Assign</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+       
+    </table>
+
+
+    {% if view %}
+
+
+    <div style="margin-top:100px">
+    <h2>Fulfillments</h2>
+
+        <table id="example2"  class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Candidate</th>
+                    <th>Submitted By</th>
+                    <th>InterviewLevel</th>
+                    <th>comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in view %}
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.candidate }}</td>
+                    <td>{{ client.submittedby }}</td>
+                    <td>{{ client.interviewlevel }}</td>
+                    <td>{{ client.comment}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    {% endif %}
+
+
+
+    {% if candidates %}
+
+
+    <div style="margin-top:100px">
+    <h2>Candidates</h2>
+
+        <table id="example2"  class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Expirence</th>
+                    <th>email</th>
+                    <th>assign</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in candidates %}
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.experience }}</td>
+                    <td>{{ client.email }}</td>
+                    <td><a class="btn btn-success" href="/assign-candidate/{{id}}/{{ client.id }}">assign</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    {% endif %}
+
+				</div>
+			</main>
+
+
+		</div>
+	</div>
+
+	<script src="{% static 'js/app.js' %}"></script> 
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+    $('#example').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+    $('#example2').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+} );
+	</script>
+
+</body>
+
+</html>

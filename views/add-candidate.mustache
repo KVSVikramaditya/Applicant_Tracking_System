@@ -1,0 +1,61 @@
+{{> header }}
+
+			<main class="content">
+				<div class="container-fluid p-0">
+
+					<div class="mb-3">
+						<h1 class="h3 d-inline align-middle">Add Candidate</h1>
+	
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										{{#error}}
+							<p class="lead" style="color: red;font-size: 20px;font-weight: bold">
+								{{error}}
+							</p>
+                                   {{/error}}
+								   {{#success}}
+							<p class="lead" style="color: green;font-size: 20px;font-weight: bold">
+								{{success}}
+							</p>
+                                   {{/success}}
+									</div>
+								
+								<div class="card-body">
+                                   <form method="post" encType="multipart/form-data" >
+									<input type="text" class="form-control" placeholder="Enter Name" name="name">
+                                    <br>
+                                    <input type="email" class="form-control" placeholder="Enter Email" name="email">
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="Enter phone number" name="phone">
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="skills e.g. java,python,js" name="skills">
+                                    <br>
+                                    <input type="number" class="form-control" placeholder="Expirence" name="exp">
+                                    <br>
+                                    <input type="file" class="form-control" placeholder="resume" name="resume">
+									<br>
+                                    <button style="background:#6d8ff1" type="submit" type="submit" class="form-control" >Add User</button>
+                                    <br>
+                                    <form>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+
+				</div>
+			</main>
+
+
+		</div>
+	</div>
+
+	<script src="js/app.js"></script>
+
+</body>
+
+</html>

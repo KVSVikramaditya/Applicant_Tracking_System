@@ -1,0 +1,80 @@
+{{> header }}
+			<main class="content">
+				<div class="container-fluid p-0">
+					<div class="mb-3">
+						<h1 class="h3 d-inline align-middle">Add Messages</h1>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										
+									</div>
+								
+								<div class="card-body">
+                                    <form method="post" action="/add-message" >
+                                       
+									<input type="text" class="form-control" placeholder="Enter Heading" name="heading">
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="Enter Message" name="details">
+                                    <br>
+                                      <button style="background:#6d8ff1" type="submit" type="submit" class="form-control" >Add Message</button>
+                                    <br>
+                                    <form>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+                <div class="container-fluid p-0">
+					<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>heading</th>
+                <th>details</th>
+                <th>Delete</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {{#noti}}
+            <tr>
+                <td>{{ heading }}</td>
+                <td>{{ details }}</td>
+                <td><a href="/delete-message/?id={{ _id}}"type="button" class="btn btn-warning">Delete</a></td>
+            </tr>
+            {{/noti}}
+        </tbody>
+       
+    </table>
+					
+
+				</div>
+
+
+
+
+
+
+			</main>
+		</div>
+	</div>
+
+	<script src="js/app.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+    $('#example').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+} );
+</script>
+</body>
+
+</html>

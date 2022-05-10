@@ -1,0 +1,122 @@
+{{> header }}
+
+			<main class="content">
+				<div class="container-fluid p-0">
+					<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Assign</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#users}}
+            <tr>
+                <td>{{ _id }}</td>
+                <td>{{ name }}</td>
+                <td>{{ email }}</td>
+                <td><a class = "btn btn-success" href="/view-tl-list?assigner={{email}}">Assign</a</td>
+            </tr>
+            {{/users}}
+        </tbody>
+       
+    </table>
+
+
+	<div  style="margin-top: 100px">
+     <h2>Asociated members</h2>
+
+
+	<table id="example2" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>assignned to</th>
+                <th>assigne</th>
+                <th>task</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#assign}}
+            <tr>
+                <td>{{ _id }}</td>
+                <td>{{ toplevel }}</td>
+                <td>{{ sublevel}}</td>
+                <td><a class = "btn btn-danger" href="/remove-assign?id={{ _id }}">remove</a</td>
+            </tr>
+            {{/assign}}
+        </tbody>
+       
+    </table>
+	
+
+
+
+    <div  style="margin-top: 100px">
+        <h2>Available Recruiters</h2>
+        <table id="example3" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Assign</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#tl}}
+                <tr>
+                    <td>{{ _id }}</td>
+                    <td>{{ name }}</td>
+                    <td>{{ email }}</td>
+                    <td><a class = "btn btn-success" href="/assign/?from={{selected}}&to={{email}}">select</a</td>
+                </tr>
+                {{/tl}}
+            </tbody>
+           
+        </table>
+        
+</div>
+
+
+
+
+
+
+
+
+				</div>
+			</main>
+
+		</div>
+	</div>
+
+	<script src="js/app.js"></script> 
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+    $('#example').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+	$('#example2').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+    $('#example3').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+} );
+	</script>
+
+</body>
+
+</html>
